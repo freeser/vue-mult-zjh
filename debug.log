@@ -1,0 +1,18 @@
+[0209/174026:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0209/174026:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0209/175856:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0209/175856:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0209/180333:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0209/180333:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0209/181248:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0209/181248:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0213/112224:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0213/112224:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0213/182544:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0213/182544:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0215/104745:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0215/104745:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0217/151016.045:ERROR:process_info.cc(608)] range at 0x83b7e000, size 0x2000 fully unreadable
+[0217/151016.062:ERROR:process_info.cc(608)] range at 0x83c7d000, size 0x3000 fully unreadable
+[0217/151016.063:ERROR:process_info.cc(608)] range at 0x84d5e000, size 0x2000 fully unreadable
+[0217/151016.063:ERROR:process_info.cc(608)] range at 0x8f37e000, size 0x2000 fully unreadable

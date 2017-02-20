@@ -1,0 +1,221 @@
+@import "var.scss";
+
+.btn-primary{
+    background-color: $main-color;
+}
+.btn-danger{
+    background-color: $warn-color;
+}
+.weui-btn.btn-border{
+    width: 80%;
+    margin: 0 10%;
+    font-size: 1.2em;
+    border-radius: 2em;
+}
+.weui-btn[disabled]{
+    cursor: not-allowed;
+    opacity: .4;
+}
+.global-margin{
+    margin: 0 $body-margin;
+}
+.form-group{
+    margin-top: 1em;
+    box-sizing: border-box;
+   & > span{
+       display: block;
+       padding-bottom: 4px;
+       b{color: red;}
+   } 
+   input[type="text"],
+   input[type="tel"],
+   input[type="number"],
+   input[type="date"],
+   input[type="datetime"],
+   input[type="datetime-local"],
+   select,textarea{
+       box-sizing: border-box;
+       width: 100%;
+       padding: 5px;
+       border: 0;
+       background: #F1EFF0;
+       border-radius: 1px;
+       font-size: 1em;
+       min-height: 2.5em;
+       -webkit-appearance:none;
+   }
+   textarea{
+       resize: none;
+       min-height: 5em;
+       padding: 10px;
+   }
+   .textwithimg{
+       background: #F1EFF0;
+       textarea{
+           height: 10em;
+       }
+   }
+   & + .form-group{
+       padding-left: $body-margin
+   }
+}
+.footer{
+    padding: 2em 0;
+}
+.title{
+    position: relative;
+    text-align: center;
+    color: $main-color;
+    font-size: 0.88em;
+    padding:1em 0;
+    span{
+      position: relative;
+      display:inline-block;
+      padding:0 6px;
+      background: #fff;
+    }
+    &:before{
+        content: "";
+        position: absolute;
+        left: 0;top: 50%;
+        height: 1px;
+        width: 100%;background: $main-color;        
+    }
+    &.organ{
+        color: $warn-color;
+        &:before{
+            background: $warn-color;        
+        }
+    }
+}
+.gray{color: #999;}
+.list{
+    a{color:#000;}
+    dd{
+        line-height: 1.6em;
+        padding: 0.5em 0;
+        label{
+            width: 6em;
+            font-size: 0.88em;
+            @extend .gray;
+        }
+    }
+}
+.selectdoc{
+    border: 1px solid #D2D2D2;
+    border-radius: 3px;
+    padding: 1em 0;
+    .sdoc-item{
+        color: #000;
+        margin: 0 1em;
+        line-height: 32px;
+        .pickhandler{
+            color: $main-color;
+            i{font-size: 0.8em;}
+        }
+        .weui-flex__item{ line-height: 1.5em;}
+        .thumb{
+            width: 32px;height: 32px;
+            background: no-repeat center center;
+            background-size: cover;
+            margin-right: 10px;
+            background-image: url(../../assets/img/male.png);
+            border-radius: 50%;
+        }
+    }
+    & + .selectdoc{
+        margin-top: $body-margin
+    }
+}
+.weui-picker__item{
+    padding: 7px 0;    
+    height: 34px;
+    box-sizing: border-box;
+}
+.explibs{
+    height:100vh;
+    font-size: 0.9em;
+    .weui-tab__panel{
+        padding: 44px 0 0;
+        .rlist{
+            padding: $body-margin;
+            border-bottom: 1px solid #DEDEDE;
+            .thumb{
+                -webkit-box-flex: 0; -webkit-flex:0 0 33vw; flex:0 0 30vw;
+                position:relative;
+                img{
+                    height: 100%;width:100%;
+                    position: absolute;top:0;left:0;
+                }
+            }
+            .pinfo{
+                position:relative;
+                padding-left:14px;overflow: hidden;
+                b{ font-size: 1.3em; margin-right: 0.85em;}
+                .remark{
+                    height: 3em;line-height:1.5em;
+                    overflow:hidden;color:#888;
+                }
+                .whitespace + .whitespace{
+                    margin: 4px 0 7px;
+                }
+                .selected{
+                    position:absolute;top:0;right:0;
+                    border:1px solid $main-color;
+                    color:$main-color;
+                    font-size: 1.1em;padding: 2px 10px;
+                    border-radius:3px; background:#fff;
+                }
+            }
+        }
+    }
+    .weui-search-bar{
+        position: absolute;top:0;z-index: 500;width: 100%;
+        .weui-search-bar__box{
+            padding: 0 30px 0 36px;
+        }
+    }
+    .weui-tabbar{
+        height:44px;
+        color:#000;
+        .weui-tabbar__label{
+            font-size:14px;
+            line-height: 1.2;
+            width: 100%;color:#000;
+            .iconfont{
+                vertical-align: 1px;
+            }
+        }
+        .weui-bar__item_on{
+            .weui-tabbar__label{
+                color:$main-color;
+            }
+        }
+        .weui-tabbar__item{
+            position:relative;
+            height: 100%; box-sizing:border-box;            
+            label{
+                position: absolute;color:#aaa;
+                top:0;left:0;width:100%;text-align:center;
+                font-size:9px; padding: 3px 0;
+            }
+            & + .weui-tabbar__item{
+                p{
+                    border-left:1px solid #ccc;
+                }
+            }
+        }
+    }
+    .weui-loadmore{
+        margin: 1.5em auto 0;
+    }
+}
+@media screen and (max-width: 414px) {
+    .weui-uploader__file,
+    .weui-uploader__input-box{
+        width: 18vw;
+        height: 18vw;
+        margin-right: 2.4vw;
+        margin-bottom: 2.4vw;
+    }
+}

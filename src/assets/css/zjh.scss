@@ -1,0 +1,331 @@
+$main-color: #0284D2;
+$body-margin: 12px;
+.notfound{
+    h2{
+        text-align: center;
+        color: #aaa;line-height: 3em;
+    }
+}
+.weui-btn{
+    border-radius: 2px;
+    font-size: 1.2em;
+}
+.weui-btn_main{
+    background: $main-color;
+}
+.weui-picker__item{
+    padding: 7px 0;    
+    height: 34px;
+    box-sizing: border-box;
+}
+.iconfont{font-size: 1em;}
+.relative{ position: relative;}
+.fixed{position: fixed;}
+.top{ top: 0;}
+.bottom{ bottom: 0;}
+.left{ left: 0;}
+.right{ right: 0;}
+.width100{width: 100%;}
+.flex{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex{
+    &.row{ flex-direction:row; -webkit-flex-direction:row;}
+    &.column{ flex-direction:column; -webkit-flex-direction:column;}
+    &.wrap{ flex-wrap:wrap; -webkit-flex-wrap:wrap;}
+    &.nowrap{ flex-wrap:nowrap; -webkit-flex-wrap:nowrap;}
+    &.jcenter{ justify-content:center; -webkit-justify-content:center;}
+    &.acenter{ align-items:center; -webkit-align-items:center;}
+
+    .f0{ -webkit-box-flex: 0; -webkit-flex:0 0 auto; flex:0 0 auto;}
+    .f1{ -webkit-box-flex: 1; -webkit-flex:1 1 auto; flex:1 1 auto;}
+    .f2{ -webkit-box-flex: 2; -webkit-flex:2 2 auto; flex:2 2 auto;}
+    .f3{ -webkit-box-flex: 3; -webkit-flex:3 3 auto; flex:3 3 auto;}
+    .f4{ -webkit-box-flex: 4; -webkit-flex:4 4 auto; flex:4 4 auto;}
+    .f5{ -webkit-box-flex: 5; -webkit-flex:5 5 auto; flex:5 5 auto;}
+    .f00{ -webkit-box-flex: 0; -webkit-flex:0; flex:0;}
+    .f10{ -webkit-box-flex: 1; -webkit-flex:1; flex:1;}
+    .f20{ -webkit-box-flex: 2; -webkit-flex:2; flex:2;}
+    .f30{ -webkit-box-flex: 3; -webkit-flex:3; flex:3;}
+    .f40{ -webkit-box-flex: 4; -webkit-flex:4; flex:4;}
+    .f50{ -webkit-box-flex: 5; -webkit-flex:5; flex:5;}
+    .shk0{ flex-shrink:0; -webkit-flex-shrink:0;}
+}
+.clearfix {
+    *zoom:1
+}
+.clearfix:after {
+    content:"";
+    visibility:hidden;
+    display:block;
+    height:0;
+    clear:both
+}
+.clearfix {
+    *position:relative
+}
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.scroll{-webkit-overflow-scrolling:touch;}
+.whitespace{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html {
+    color:#000;
+    font-size: 12px;
+}
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 13px
+    }
+}
+@media screen and (min-width: 375px) {
+    html {
+        font-size: 14px;
+    }
+}
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 15px;
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+[disabled]{
+    opacity: .5;
+    cursor: not-allowed;
+}
+.maincolor{color: $main-color;}
+.fixedfooter{
+    padding-bottom: 60px;
+    footer{
+        height: 60px;background: #fff;
+    }
+    .btnarea{ margin: $body-margin;}
+}
+.main{
+    $form-size: 1.12em;
+    header{
+        background: #eee;
+        padding: 10px $body-margin;
+    }
+    section{
+        font-size: $form-size;
+        margin: 0 $body-margin;
+        .title{
+            line-height: 2em;color: #ccc;
+            font-size: 0.9em;
+            margin: 10px 0;
+            b{ color: red;}
+        }
+        .line{
+            height: 1px;background: #E5E5E5;
+            margin: 10px -12px 10px 0;
+        }
+        .hasselect{
+            .iconfont{margin-left:-1em;}
+        }
+        select{
+            border: 0; 
+            -webkit-appearance: none;
+            background: transparent;
+            font-size: 1em;
+            color: #666;
+        }
+        .iconfont{color:$main-color;}
+        .weui-cells_radio{
+            margin-top:-10px;
+        } 
+        .weui-cells_radio .weui-flex__item{
+            width:50%; box-sizing: border-box;
+            padding:6px 0; float: left;
+            &:before{
+                display:none;
+            }
+            .weui-cell__bd{
+                -webkit-box-flex: 0; -webkit-flex:0 0 auto; flex:0 0 auto;
+                padding-right:1em;
+            }
+            .weui-cell__ft{
+                @extend .flex;
+                background:#D0D8DB;
+                border-radius:50%;
+                width: 14px;
+                height: 14px;
+                padding: 0;
+                margin-right: 1em;
+                justify-content: center;
+                align-items: center;
+                .weui-icon-checked{
+                    margin:0 0 5px 5px
+                }
+            }
+        }
+        .pickhandler{
+            border:0;background:transparent;
+            color:$main-color;
+            font-size: 1em;
+        }
+        .selectdoc{
+            margin-top:-10px;
+            dd{
+                padding: 6px 0;
+            }
+        }
+        .remark{
+            font-size: 0.9em;
+            padding:1em 0 0.5em;color:#666;
+        }
+        .footer{
+            text-align:right;
+            color:$main-color;
+        }
+    }
+}
+.location{
+    .selected{color: blue}
+}
+.explibs{
+    height:100vh;
+    font-size: 0.9em;
+    .weui-tab__panel{
+        padding: 44px 0 0;
+        .rlist{
+            padding: $body-margin;
+            border-bottom: 1px solid #DEDEDE;
+            .thumb{
+                -webkit-box-flex: 0;-webkit-flex:0 0 33vw;flex:0 0 33vw;
+                position:relative;
+                img{
+                    height: 100%;width:100%;
+                    position: absolute;top:0;left:0;
+                }
+            }
+            .pinfo{
+                position:relative;
+                padding-left:14px;overflow: hidden;
+                b{ font-size: 1.3em; margin-right: 0.85em;}
+                .remark{
+                    height: 3em;line-height:1.5em;
+                    overflow:hidden;color:#888;
+                }
+                .whitespace + .whitespace{
+                    margin: 4px 0 7px;
+                }
+                .selected{
+                    position:absolute;top:0;right:0;
+                    border:1px solid $main-color;
+                    color:$main-color;
+                    font-size: 1.1em;padding: 2px 10px;
+                    border-radius:3px; background:#fff;
+                }
+            }
+        }
+    }
+    .weui-search-bar{
+        position: absolute;top:0;z-index: 500;width: 100%;
+        .weui-search-bar__box{
+            padding: 0 30px 0 36px;
+        }
+    }
+    .weui-tabbar{
+        height:44px;
+        color:#000;
+        .weui-tabbar__label{
+            font-size:14px;
+            line-height: 1.2;
+            width: 100%;color:#000;
+            .iconfont{
+                vertical-align: 1px;
+            }
+        }
+        .weui-bar__item_on{
+            .weui-tabbar__label{
+                color:$main-color;
+            }
+        }
+        .weui-tabbar__item{
+            position:relative;
+            height: 100%; box-sizing:border-box;
+            @extend .flex;
+            @extend .acenter;
+            @extend .jcenter;            
+            label{
+                position: absolute;color:#aaa;
+                top:0;left:0;width:100%;text-align:center;
+                font-size:9px; padding: 3px 0;
+            }
+            & + .weui-tabbar__item{
+                p{
+                    border-left:1px solid #ccc;
+                }
+            }
+        }
+    }
+    .weui-loadmore{
+        margin: 1.5em auto 0;
+    }
+}
+.step2{
+    header{
+        background: $main-color;
+        padding: 2px $body-margin;
+        color: #fff;font-size: 11px;
+    }
+    section{
+        font-size: 1.13em;
+        margin-left: $body-margin;
+        dd{
+            border-bottom: 1px solid #F4F4F4;
+            padding: 0.6em $body-margin 10px 0;
+        }
+        .label{
+            display: block;padding-right: 0.5em;
+            white-space: nowrap;
+            b{ color: red;}
+            small{
+                font-size: 0.85em;color: #ccc;
+            }
+        }
+        input{
+            font-size: inherit;
+            width: 100%;
+            border: 0;
+            padding: 4px;
+            box-sizing: border-box;
+            color: #666;
+        }
+        textarea{
+            font-size: inherit;
+            width: 100%;
+            border: 0;
+            padding: 10px 0;
+            box-sizing: border-box;
+            color: #666;
+        }
+        .weui-cell{
+            padding: 0 15px;float:left;width: auto;
+            line-height: 1.37em;
+            &:before{display: none;}
+        }
+        .diyupload{
+            padding-top: 1em;
+        }
+        .weui-uploader__file,
+        .weui-uploader__input-box{
+            width: 4em;height: 4em;
+        }
+    }
+}
+.bindtel{
+    height: 100vh;
+    background: #F8F8F8;
+}
