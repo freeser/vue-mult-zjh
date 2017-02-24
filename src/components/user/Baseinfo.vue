@@ -13,7 +13,7 @@
         <dl>
             <dd class="flex acenter">
                 <label>帐户 </label>
-                <span class="flex_1">{{ uinfo.mobileNumber }}</span>
+                <span class="flex_1">{{ nickname }}</span>
             </dd>
             <dd class="flex acenter" @click="showDialog(true)">
                 <label>用户名 </label>
@@ -105,6 +105,12 @@
                     loading.hide();
                 });
             }            
+        },
+        computed: {
+          nickname () {
+              let s = this.uinfo.mobileNumber || '***********';
+              return s.substr(0, 3) + '****' + s.substr(7, 4);
+          }  
         },
         mounted () {
           this.ages = (function(){

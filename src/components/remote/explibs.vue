@@ -17,7 +17,7 @@
                 <div class="thumb">
                   <img :src="imgsrc(d.listSpecialPicture)" alt=""/>
                 </div>
-                <div class="f1 pinfo">
+                <div class="flex_1 pinfo">
                   <p class="whitespace"><b>{{d.specialName}}</b>{{d.duty}}&ensp;{{d.profession}}</p>
                   <p class="whitespace">{{d.hosName}}&ensp;{{d.depName}}</p>
                   <p class="remark">{{ d.specialty }}</p>

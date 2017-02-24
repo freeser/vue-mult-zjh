@@ -11,7 +11,7 @@
           <dl>
               <dd><input type="tel" v-model="form.tel" placeholder="请输入您的手机号"></dd>
               <dd class="flex">
-                  <span class="flex_1"><input type="number" v-model.number="form.code" placeholder="请输入您的验证码"></span>                  
+                  <span class="flex_1"><input type="tel" v-model="form.code" placeholder="请输入您的验证码"></span>                  
                   <button type="button" class="weui-btn btn-primary btn-border-2" style="width: 40%;margin-left: 10px;":disabled="tel || lock" @click="getcode" >{{ lock ? timer : '获取验证码'}}</button>
               </dd>
               <dt>
@@ -76,7 +76,7 @@
                     let params = Object.assign({ tel: that.form.tel, openid: that.openid }, that.$route.params); 
                     if (d.status == 'error') {
                         return weui.alert('验证码错误，请重新输入'), 0;
-                    } if (d.reg == 'true') { 
+                    } if (d.reg == 'true') {
                         that.$router.replace({ name: 'confirm', params }) 
                     } else {
                         that.$router.replace({ name: 'next', params })
@@ -93,7 +93,7 @@
                 $.post('/wzjh/gainVeryCode',{ telphone: this.form.tel})
                 .done(function(d){
                     if(d.status == 'success'){
-                        weui.alert('验证码发送成功');
+                        weui.toast('验证码发送成功', 1500);
                         that.timeleave();
                     }else{
                         weui.alert('验证码发送失败，请重试');
@@ -141,11 +141,15 @@
         }
         input{
             width:100%;
-            height: 2.6em;
+            height: 3rem;
             box-sizing:border-box;
             padding: 5px 10px;
             border: 0;
             border-radius:2px;
+        }
+        button{
+            height: 3rem;
+            box-sizing:border-box;
         }
     }
 </style>

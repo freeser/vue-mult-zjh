@@ -97,11 +97,15 @@
         input[type="tel"],
         input[type="date"]{
             width:100%;
-            height: 2.6em;
+            height: 3rem;
             box-sizing:border-box;
             padding: 5px 10px;
             border: 0;
             border-radius:2px;
+        }
+        button{
+            height: 3rem;
+            box-sizing:border-box;
         }
     }
     .checkbox{

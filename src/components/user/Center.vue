@@ -98,7 +98,7 @@
                 location.href = '/wzjh/myorders?response_type=code&code='+ this.code +'&state=123&winzoom=1';
             },
             redirectTelus () {
-                location.href = '/wzjh/aboutus';
+                location.href = '/app.jsp#home_statichtm/contactus';
             }
         }
     };

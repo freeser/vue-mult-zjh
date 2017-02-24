@@ -32,6 +32,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     new webpack.optimize.UglifyJsPlugin({
+      comments: false,        //去掉注释
       compress: {
         warnings: false
       }
