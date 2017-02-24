@@ -6,5 +6,5 @@
   @import "../../assets/font/iconfont.css";
   @import "../../assets/css/weui.css";
   @import "../../assets/css/reset.scss";
-  @import "../../assets/css/tool.scss";
+  @import "../../assets/css/user.scss";
 </style>

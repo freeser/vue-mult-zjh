@@ -1,5 +1,5 @@
-$main-color: #0284D2;
-$body-margin: 12px;
+@import "var.scss";
+
 .notfound{
     h2{
         text-align: center;
@@ -13,91 +13,11 @@ $body-margin: 12px;
 .weui-btn_main{
     background: $main-color;
 }
-.weui-picker__item{
-    padding: 7px 0;    
-    height: 34px;
-    box-sizing: border-box;
-}
-.iconfont{font-size: 1em;}
-.relative{ position: relative;}
-.fixed{position: fixed;}
 .top{ top: 0;}
 .bottom{ bottom: 0;}
 .left{ left: 0;}
 .right{ right: 0;}
 .width100{width: 100%;}
-.flex{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-}
-.flex{
-    &.row{ flex-direction:row; -webkit-flex-direction:row;}
-    &.column{ flex-direction:column; -webkit-flex-direction:column;}
-    &.wrap{ flex-wrap:wrap; -webkit-flex-wrap:wrap;}
-    &.nowrap{ flex-wrap:nowrap; -webkit-flex-wrap:nowrap;}
-    &.jcenter{ justify-content:center; -webkit-justify-content:center;}
-    &.acenter{ align-items:center; -webkit-align-items:center;}
-
-    .f0{ -webkit-box-flex: 0; -webkit-flex:0 0 auto; flex:0 0 auto;}
-    .f1{ -webkit-box-flex: 1; -webkit-flex:1 1 auto; flex:1 1 auto;}
-    .f2{ -webkit-box-flex: 2; -webkit-flex:2 2 auto; flex:2 2 auto;}
-    .f3{ -webkit-box-flex: 3; -webkit-flex:3 3 auto; flex:3 3 auto;}
-    .f4{ -webkit-box-flex: 4; -webkit-flex:4 4 auto; flex:4 4 auto;}
-    .f5{ -webkit-box-flex: 5; -webkit-flex:5 5 auto; flex:5 5 auto;}
-    .f00{ -webkit-box-flex: 0; -webkit-flex:0; flex:0;}
-    .f10{ -webkit-box-flex: 1; -webkit-flex:1; flex:1;}
-    .f20{ -webkit-box-flex: 2; -webkit-flex:2; flex:2;}
-    .f30{ -webkit-box-flex: 3; -webkit-flex:3; flex:3;}
-    .f40{ -webkit-box-flex: 4; -webkit-flex:4; flex:4;}
-    .f50{ -webkit-box-flex: 5; -webkit-flex:5; flex:5;}
-    .shk0{ flex-shrink:0; -webkit-flex-shrink:0;}
-}
-.clearfix {
-    *zoom:1
-}
-.clearfix:after {
-    content:"";
-    visibility:hidden;
-    display:block;
-    height:0;
-    clear:both
-}
-.clearfix {
-    *position:relative
-}
-*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
-.scroll{-webkit-overflow-scrolling:touch;}
-.whitespace{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-html {
-    color:#000;
-    font-size: 12px;
-}
-@media screen and (min-width: 320px) {
-    html {
-        font-size: 13px
-    }
-}
-@media screen and (min-width: 375px) {
-    html {
-        font-size: 14px;
-    }
-}
-@media screen and (min-width: 414px) {
-    html {
-        font-size: 15px;
-    }
-}
-@media screen and (min-width: 600px) {
-    html {
-        font-size: 16px;
-    }
-}
 
 [disabled]{
     opacity: .5;

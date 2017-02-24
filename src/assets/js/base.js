@@ -192,5 +192,15 @@ export default {
         age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1;
         if (gmonth < month || gmonth == month && gday <= day) { age++; }
         return { birth: year + "-" + gmonth + "-" + gday, sex: sex, age: age, sexcode: sexcode }
-    }
+    },
+    getParam (name) {
+	    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	    var regexS = "[\\?&]" + name + "=([^&#]*)";
+	    var regex = new RegExp(regexS);
+	    var results = regex.exec(window.location.href);
+	    if (results == null)
+	        return "";
+	    else
+	        return results[1];
+	}
 }

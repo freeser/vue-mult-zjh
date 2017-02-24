@@ -44,6 +44,7 @@ import $ from 'jquery'
 export default {
     data() {
         return {
+            openid: '',
             telphone: '',
             code: '',
             timer: 60,
@@ -75,7 +76,7 @@ export default {
             var that = this;
             if(this.validate) return weui.alert('无效的输入项'), 0;
             this.islogin = true;
-            $.post('/wzjh/tellCode',{code: this.code,tel: this.telphone, openid: wxconfig.openId })
+            $.post('/wzjh/tellCode',{code: this.code,tel: this.telphone, openid: this.openid })
             .done(function(d){
                 if(d.status == 'success'){
                     that.redirct();

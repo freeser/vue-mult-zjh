@@ -2,7 +2,7 @@
     <div class="main fixedfooter">
         <header>
             当前位置<span>「<label v-text="cityname"></label>」</span> - 
-            <router-link to="/location" class="maincolor">切换 <i class="iconfont icon-qiehuan"></i></router-link>
+            <router-link :to="{ name: 'location', params: { openid: openid }}" class="maincolor">切换 <i class="iconfont icon-qiehuan"></i></router-link>
         </header>
         <section>            
             <p class="title">当前城市合作医院<b>*</b></p>
@@ -26,7 +26,7 @@
             <p class="title">选择您要会诊的专家<b>*</b></p>
             <dl v-if="!hasdoc" class="selectdoc">
                 <dd v-if="depid">
-                    <router-link v-if="!expid" :to="{ name: 'explibs', params: { hosid: hosid, depid:depid }}" class="pickhandler whitespace">
+                    <router-link v-if="!expid" :to="{ name: 'explibs', params: { openid: openid, hosid: hosid, depid:depid }}" class="pickhandler whitespace">
                         我明确要会诊的专家，去选择<i class="iconfont icon-arrright"></i>
                     </router-link>
                     <div v-else class="weui-flex pickexps" style="line-height:36px;height:36px;">
@@ -44,7 +44,7 @@
                                 {{ expinfo.vedioAmount ? (expinfo.vedioAmount + '元') : '' }}
                             </span>
                         </span>
-                        <router-link :to="{ name: 'explibs', params: { hosid: hosid, depid:depid }}" class="pickhandler" style="flex:0 0 5.5em;whitespace:nowrap">
+                        <router-link :to="{ name: 'explibs', params: { openid: openid, hosid: hosid, depid:depid }}" class="pickhandler" style="flex:0 0 5.5em;whitespace:nowrap">
                             更换专家<i class="iconfont icon-arrright"></i>
                         </router-link>
                     </div>
@@ -115,13 +115,14 @@
     export default {
         data() {
             return {
+                expid: this.$route.params.docid || '',
+                openid: '',
                 cityname: '正在定位...',
                 cityid: '',
                 hosid: '',
                 hos: [],
                 depid: '',
                 dep: [],
-                expid: wxconfig.expid || '',
                 expinfo: {},
                 levid: '',
                 levname: '',
@@ -132,9 +133,30 @@
                 hasdoc: false
             }
         },
+        beforeRouteEnter (to, from, next) {
+            let code = B.getParam('code');
+            let openid = to.params.openid || B.getParam('openid');
+            if( openid ){
+                next((vm) => {
+                    vm.openid = openid;
+                })
+            } else if( code ){
+                let loading = weui.loading();
+                $.post('/wzjh/gainpersoninfo', { code })
+                .done(function (d) {
+                    loading.hide()
+                    d.uwr && d.uwr.openId ? 
+                        next((vm) => {
+                            vm.openid = d.uwr.openId || openid;
+                        }) : 
+                        weui.alert('数据异常');
+                })
+            } else {
+                next('/')
+            }
+        },
         created() {
             var that = this,loading = weui.loading();
-            wx.config(wxconfig);
             wx.ready(function () {
                 wx.getLocation({
                     type: 'wgs84',
@@ -168,15 +190,21 @@
             }
         },
         activated() {
-            if (this.$route.params.cityid) {
-                this.cityid = this.$route.params.cityid;
-                this.cityname = this.$route.params.cityname;
+            if (this.$route.query.cityid) {
+                this.cityid = this.$route.query.cityid;
+                this.cityname = this.$route.query.cityname;
                 this.hosid = '', this.depid = '';
                 this.gainhos();
             }
-            if (this.$route.params.pinfo) {
-                this.expinfo = this.$route.params.pinfo;
-                this.expid = this.expinfo.specialId;
+            if (this.$route.query.explibid) {
+                let docid = this.$route.query.explibid;
+                let loading = weui.loading();
+                $.post('/kangxin/gainspedetail',{ docid })
+                .done((d) => {
+                    this.expinfo = d.special || {};
+                    loading.hide();
+                });
+                this.expid = docid;
             }
         },
         computed: {
@@ -266,6 +294,7 @@
                 var cfg = {
                     name: 'step2',
                     params: {
+                        openid: this.openid,
                         cityid: this.cityid,
                         hosid: this.hosid,
                         departid: this.depid,
@@ -280,7 +309,7 @@
                 var that = this;
                 if (this.validate) return 0;
                 this.islogin = true;
-                $.post('/wzjh/tellbind', { openid: wxconfig.openId })
+                $.post('/wzjh/tellbind', { openid: this.openid })
                     .done(function (d) {
                         if (d.isbind == true) {
                             that.nextstep('push')
@@ -288,6 +317,7 @@
                             that.$router.push({
                                 name: 'bind',
                                 params: {
+                                    openid: that.openid,
                                     go:function(){
                                         that.nextstep('replace')
                                     } 

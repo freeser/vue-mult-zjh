@@ -1,8 +1,11 @@
 <template>
   <div class="diyupload clearfix" :id="id">
-      <ul class="weui-uploader__files" :id="id + 'Files'"></ul>
+      <ul class="weui-uploader__files" :id="id + 'Files'">
+          <li v-for="(l, idx) in list" class="weui-uploader__file" :data-id="idx" :style="`background-image: url(${l.url})`">  </li>
+      </ul>
       <div class="weui-uploader__input-box">
-          <input :id="id + 'Input'" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+          <slot name="name"></slot>
+          <input :id="id + 'Input'" class="weui-uploader__input" type="file" accept="image/*" :multiple="multiple">
       </div>
   </div>
 </template>
@@ -15,6 +18,13 @@ export default {
     id: {
       type: String,
       default: 'localfile'
+    },
+    list: {
+      type: Array
+    },
+    multiple: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -42,6 +52,9 @@ export default {
             if (this.size > 10 * 1024 * 1024) {
                 weui.alert('请上传不超过10M的图片');
                 return false;
+            }
+            if(!that.multiple){
+                document.querySelector(`#${that.id}Files`).innerHTML = ''
             }
             // if (files.length > 5) { // 防止一下子选择过多文件
             //   weui.alert('最多只能上传5张图片，请重新选择');
@@ -74,8 +87,14 @@ export default {
         onSuccess: function (res) {
             //console.log(name + '--onSuccess--');
             //console.log(this, res);
-            that.ids.push(res.upid)
-            that.$emit('success');
+            if(!that.multiple){
+                that.ids = [res.upid];
+                that.urls = [res.urlpath];
+            }else{
+                that.ids.push(res.upid);
+                that.urls.push(res.urlpath);
+            }
+            that.$emit('success', that.ids.join(','), that.urls.join(','));
             // return true; // 阻止默认行为，不使用默认的成功态
         },
         onError: function (err) {

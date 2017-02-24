@@ -88,6 +88,7 @@ import B from 'base'
 export default{
   data() {
     return {
+      openid: '',
       form: {
         contactName: '',
         age: '',
@@ -126,6 +127,7 @@ export default{
     });
   },
   activated() {
+    this.openid = this.$route.params.openid;
     if(this.$route.params.hosid)
       this.req = this.$route.params;
     else
@@ -153,7 +155,7 @@ export default{
       // if(!this.form.sex) return weui.topTips('请选择性别', 3000),0;
       if(this.validate) return weui.topTips('请填写正确的字段', 3000),0;
       var loading = weui.loading(),that = this;
-      $.post('/wzjh/subremotecase',$.extend({ openid : wxconfig.openId }, this.form, this.req))
+      $.post('/wzjh/subremotecase',$.extend({ openid : this.openid }, this.form, this.req))
       .done(function(d){
         //d.payStatus == true ? that.wxpay(d) : that.paysuccess();
         that.wxpay(d);

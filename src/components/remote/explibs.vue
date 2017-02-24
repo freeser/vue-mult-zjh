@@ -21,7 +21,7 @@
                   <p class="whitespace"><b>{{d.specialName}}</b>{{d.duty}}&ensp;{{d.profession}}</p>
                   <p class="whitespace">{{d.hosName}}&ensp;{{d.depName}}</p>
                   <p class="remark">{{ d.specialty }}</p>
-                  <router-link class="selected" :to="{ name: 'main', params: { pinfo: d }}" replace>选定</router-link>
+                  <router-link class="selected" :to="{ path:'/main/'+ openid +'/', query: { explibid: d.specialId }}" replace>选定</router-link>
                 </div>
               </dd>
             </dl>
@@ -53,6 +53,7 @@ import B from 'base'
 export default{
   data() {
     return {
+      openid: '',
       form: {
         depid: '',
         standdepid: '',
@@ -178,6 +179,7 @@ export default{
     this.scll.lock()
   },
   activated() {
+    this.openid = this.$route.params.openid,
     this.form.depid = this.$route.params.depid || '';
     this.form.pageNo = 1;
     this.list = [];

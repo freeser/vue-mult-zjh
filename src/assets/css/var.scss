@@ -1,3 +1,33 @@
 $main-color: #0284D2;
 $warn-color: #F6AB00;
 $body-margin: 12px;
+.weui-btn{
+    font-size: 1em;
+}
+.weui-picker__item{
+    padding: 7px 0;    
+    height: 34px;
+    box-sizing: border-box;
+}
+.btn-primary{
+    background-color: $main-color;
+}
+.btn-danger{
+    background-color: $warn-color;
+}
+.btn-border-2{
+    border-radius: 2px;
+}
+.btn-border{
+    width: 80%;
+    margin: 0 10%;
+    font-size: 1.2em;
+    border-radius: 2em;
+}
+.weui-btn[disabled]{
+    cursor: not-allowed;
+    opacity: .4;
+}
+.global-margin{
+    margin: 0 $body-margin;
+}

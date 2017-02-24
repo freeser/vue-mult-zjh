@@ -3,22 +3,22 @@
       <template>
         <div class="weui-cells__title">当前位置</div>
         <div class="weui-cells">
-          <router-link class="weui-cell weui-cell_access" 
-            :class="{'selected':selected==cityid}"
-            :to="{ name: 'main', params: { cityid:cityid,cityname: cityname }}" replace>          
-              <div @click="selected=cityid" class="weui-cell__bd">{{cityname}}</div>
+          <div class="weui-cell weui-cell_access" 
+            @click.prevent="redirect({ cityid: cityid, cityname: cityname })"
+            :class="{'selected':selected==cityid}">          
+              <div @click.prevent="selected=cityid" class="weui-cell__bd">{{cityname}}</div>
               <div class="weui-cell__ft"></div>
-          </router-link>
+          </div>
       </div>
       </template>
       <div class="weui-cells__title">已开通城市列表</div>
       <div class="weui-cells">
-          <router-link v-for="l in citys" class="weui-cell weui-cell_access" 
-            :class="{'selected':selected==l.remark}"
-            :to="{ name: 'main', params: { cityid: l.remark,cityname: l.name }}" replace>          
-              <div @click="selected=l.remark" class="weui-cell__bd">{{l.name}}</div>
+          <div v-for="l in citys" class="weui-cell weui-cell_access" 
+            @click.prevent="redirect({ cityid: l.remark, cityname: l.name })"
+            :class="{'selected':selected==l.remark}">          
+              <div @click.prevent="selected=l.remark" class="weui-cell__bd">{{l.name}}</div>
               <div class="weui-cell__ft"></div>
-          </router-link>
+          </div>
       </div>
     </div>
 </template>
@@ -29,6 +29,7 @@ import weui from 'weui'
 export default {
   data () {
     return {
+      openid: this.$route.params.openid,
       citys: [],
       selected: '',
       cityid: '',
@@ -37,7 +38,6 @@ export default {
   },
   created () {
     var that = this,loading = weui.loading();
-    wx.config(wxconfig);
     wx.ready(function(){
         wx.getLocation({
           type: 'wgs84',
@@ -61,6 +61,11 @@ export default {
     }).always(function(){
       loading.hide();
     });
+  },
+  methods: {
+    redirect (params) {
+      this.$router.replace({ path: `/main/${ this.openid }/`, query: params });
+    }
   }
 }
   
